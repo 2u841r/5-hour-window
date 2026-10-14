@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>5 Hour Window Settings</title>
+    <link rel="stylesheet" href="ui.css" />
+  </head>
+  <body class="options">
+    <h1>5 Hour Window Settings</h1>
+    <form id="form">
+      <fieldset>
+        <legend>Providers</legend>
+        <label><input type="checkbox" name="claude" /> Claude (uses your claude.ai login)</label>
+        <label><input type="checkbox" name="cursor" /> Cursor (uses your cursor.com login)</label>
+        <label><input type="checkbox" name="zai" /> Z.ai</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Claude</legend>
+        <label>
+          Organization ID (optional)
+          <input type="text" name="claudeOrgId" placeholder="auto-detected from lastActiveOrg cookie" />
+        </label>
+        <p class="hint">Leave empty to auto-detect. Set it if you belong to several orgs.</p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Z.ai</legend>
+        <label>
+          API key (optional)
+          <input type="password" name="zaiApiKey" autocomplete="off" />
+        </label>
+        <p class="hint">Only needed if the cookie session is rejected. Stored locally in this browser.</p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Polling and alerts</legend>
+        <label>
+          Refresh every (minutes)
+          <input type="number" name="intervalMin" min="1" max="240" />
+        </label>
+        <label>
+          Notify when any meter reaches (%), 0 to disable
+          <input type="number" name="notifyAt" min="0" max="100" />
+        </label>
+      </fieldset>
+
+      <div class="row">
+        <button type="submit">Save</button>
+        <button type="button" id="clear">Clear history</button>
+        <span id="saved"></span>
+      </div>
+    </form>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>
